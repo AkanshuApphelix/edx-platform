@@ -236,7 +236,7 @@ def main(
                 if not dry:
                     # Import _sass late so that this script can be dry-run without installing
                     # libsass, which takes a while as it must be compiled from its C source.
-                    from sass import compile_filename  # pylint: disable=protected-access
+                    from _sass import compile_filename  # pylint: disable=protected-access
                     success, output, _ = compile_filename(
                         str(source).encode(fs_encoding),
                         output_style,
