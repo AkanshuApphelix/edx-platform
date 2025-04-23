@@ -631,6 +631,24 @@ def libraries_v2_enabled():
     )
 
 
+# .. toggle_name: contentstore.new_studio_mfe.use_new_howitworks_page
+# .. toggle_implementation: WaffleFlag
+# .. toggle_default: False
+# .. toggle_description: This flag enables the use of the new studio How It Works page mfe
+# .. toggle_use_cases: temporary
+# .. toggle_creation_date: 2025-04-23
+# .. toggle_target_removal_date: 2025-07-23
+# .. toggle_warning:
+ENABLE_NEW_HOWITWORKS_PAGE = WaffleFlag('contentstore.new_studio_mfe.use_new_howitworks_page', __name__, CONTENTSTORE_LOG_PREFIX)
+
+
+def use_new_howitworks_page():
+    """
+    Returns a boolean if new studio How It Works page mfe is enabled
+    """
+    return ENABLE_NEW_HOWITWORKS_PAGE.is_enabled()
+
+
 # .. toggle_name: contentstore.enable_course_optimizer
 # .. toggle_implementation: CourseWaffleFlag
 # .. toggle_default: False

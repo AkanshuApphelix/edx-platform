@@ -8,6 +8,8 @@ from django.conf import settings
 from django.http.response import Http404
 from django.shortcuts import redirect
 
+from cms.djangoapps.contentstore.toggles import use_new_howitworks_page
+from cms.djangoapps.contentstore.utils import get_howitworks_url
 from common.djangoapps.edxmako.shortcuts import render_to_response
 
 from ..config.waffle import ENABLE_ACCESSIBILITY_POLICY_PAGE
@@ -66,6 +68,10 @@ def howitworks(request):
     if request.user.is_authenticated:
         return redirect('/home/')
     else:
+        if use_new_howitworks_page():
+            howitworks_url = get_howitworks_url()
+            if howitworks_url:
+                return redirect(howitworks_url)
         return render_to_response('howitworks.html', {})
 
 

@@ -570,6 +570,17 @@ def get_taxonomy_tags_widget_url(course_locator=None) -> str | None:
     return f'{mfe_base_url}/tagging/components/widget/'
 
 
+def get_howitworks_url():
+    """
+    Gets course authoring microfrontend URL for How It Works page view.
+    """
+    mfe_base_url = settings.COURSE_AUTHORING_MICROFRONTEND_URL
+    if not mfe_base_url:
+        return None
+
+    return f'{mfe_base_url}/howitworks'
+
+
 def course_import_olx_validation_is_enabled():
     """
     Check if course olx validation is enabled on course import.
